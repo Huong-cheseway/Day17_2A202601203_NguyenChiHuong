@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from types import SimpleNamespace
 from typing import Any
 
 from .config import settings
@@ -41,9 +42,17 @@ class StudentMemory:
             user_id=user_id,
             query=cap_query(query),
             scope="episodes",
-            limit=5,
+            limit=20,
         )
-        return render_graph_search(results, episode_char_cap=500)
+        episodes = list(getattr(results, "episodes", None) or [])
+        episodes.sort(
+            key=lambda episode: (
+                len(getattr(episode, "content", "") or "") > 250,
+                len(getattr(episode, "content", "") or ""),
+            )
+        )
+        prioritized = SimpleNamespace(episodes=episodes)
+        return render_graph_search(prioritized, episode_char_cap=500)
 
     def retrieve_semantic(self, graph_id: str, query: str) -> str:
         # LAB TODO 3/4

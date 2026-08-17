@@ -5,22 +5,22 @@
 - Cases: **11**
 - Passed: **11/11**
 - Evidence hit rate: **100.0%**
-- Average retrieval latency: **1351.9 ms**
-- Average token reduction vs full source context: **20.9%**
+- Average retrieval latency: **640.5 ms**
+- Average token reduction vs full source context: **14.2%**
 
 | Case | Layer | Pass | Latency ms | Retrieved tokens | Token reduction | Missing / Error |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| E01 | short_term | PASS | 0.1 | 133 | 0.0% |  |
-| E06 | semantic | PASS | 7216.4 | 148 | 67.8% |  |
-| E09 | long_term | PASS | 1533.4 | 624 | 0.0% |  |
+| E01 | short_term | PASS | 0.3 | 133 | 0.0% |  |
+| E06 | semantic | PASS | 624.5 | 148 | 67.8% |  |
+| E09 | long_term | PASS | 1206.6 | 624 | 0.0% |  |
 | E10 | short_term | PASS | 0.2 | 195 | 0.0% |  |
-| E02 | long_term | PASS | 1263.5 | 799 | 0.0% |  |
-| E03 | long_term | PASS | 1539.8 | 799 | 0.0% |  |
-| E04 | episodic | PASS | 277.2 | 153 | 30.8% |  |
-| E05 | episodic | PASS | 274.8 | 127 | 42.5% |  |
-| E07 | mixed | PASS | 1401.7 | 485 | 14.2% |  |
-| E11 | semantic | PASS | 273.2 | 146 | 74.2% |  |
-| E08 | long_term | PASS | 1090.8 | 802 | 0.0% |  |
+| E02 | long_term | PASS | 1072.9 | 801 | 0.0% |  |
+| E03 | long_term | PASS | 1044.0 | 799 | 0.0% |  |
+| E04 | episodic | PASS | 281.4 | 1358 | 0.0% |  |
+| E05 | episodic | PASS | 269.0 | 1392 | 0.0% |  |
+| E07 | mixed | PASS | 1272.5 | 485 | 14.2% |  |
+| E11 | semantic | PASS | 240.4 | 146 | 74.2% |  |
+| E08 | long_term | PASS | 1034.1 | 802 | 0.0% |  |
 
 ## Evidence excerpts
 
@@ -50,11 +50,11 @@
 
 ### E04 - episodic
 
-`EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: Cach hieu qua la reuse aiohttp ClientSession va dat concurrency=20. Reflection: loi chinh la connection churn, khong phai timeout threshold. Ma su co ASYNC-FIX-20. EPISODE: Da ghi nhan trajectory: increase timeout khong hieu qua; ClientSession + concurrency=20 giai quyet connection churn.`
+`EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: Da ghi nhan trajectory: increase timeout khong hieu qua; ClientSession + concurrency=20 giai quyet connection churn. EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ngan. EPISODE: Cach hieu qua la reuse aiohttp ClientSession va dat concurrency=20. Reflection: loi chinh la connection churn, khong phai t`
 
 ### E05 - episodic
 
-`EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ngan. EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: Cach hieu qua la reuse aiohttp ClientSession va dat concurrency=20. Reflection: loi chinh la connection churn, khong phai timeout threshold. Ma su co ASYNC-FIX-20. EPISODE: Backend cua BLUEBIRD-42 bat buoc dung stack gi? EPISODE: Voi demo ca nhan cua Minh, ngon ngu uu tien la gi?`
+`EPISODE: Voi demo ca nhan cua Minh, ngon ngu uu tien la gi? EPISODE: Hay kiem tra connection pool, lifecycle cua client va concurrency. EPISODE: Hom nay toi debug async HTTP. Toi da thu tang timeout len 60s nhung van fail. EPISODE: TODO: hoan thanh benchmark report truoc thu Sau luc 16:00. Day la open loop LAB-REPORT-1600. EPISODE: Toi dang hoc async/await va hay nham coroutine voi Task. Neu sau nay gap chu de nay, hay giai thich bang timeline. EPISODE: Da ghi nhan trajectory: increase timeout khong hieu qua; ClientSession + concurrency=20 giai quyet connection churn. EPISODE: Ten du an ca nhan cua toi la ORCHID-27. Toi thich Python va khong thich Java. Khi giai thich code, hay dung vi du ng`
 
 ### E07 - mixed
 
