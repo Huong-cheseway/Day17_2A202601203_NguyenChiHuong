@@ -29,7 +29,20 @@ class StudentMemory:
         #        validity ranges (a low limit can miss deadline/open-loop facts).
         prime_eval_thread(self.client, user_id, thread_id, query)
         context = self.client.thread.get_user_context(thread_id=thread_id)
-        return getattr(context, "context", "") or ""
+        context_text = getattr(context, "context", "") or ""
+
+        try:
+            facts = self.client.graph.search(
+                user_id=user_id,
+                query=cap_query(query),
+                scope="edges",
+                limit=30,
+            )
+            facts_text = render_graph_search(facts)
+        except Exception:
+            facts_text = ""
+
+        return "\n\n".join(text for text in (context_text, facts_text) if text.strip())
 
     def retrieve_episodic(self, user_id: str, query: str) -> str:
         # LAB TODO 2/4
